@@ -9,6 +9,8 @@ public class Admin {
 
     public static void main(String[] args) {
 
+        users = FileIO.readFile(usersText);
+
         Scanner input = new Scanner(System.in);
 
         boolean isActive = true;
