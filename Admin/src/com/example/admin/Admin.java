@@ -64,6 +64,7 @@ public class Admin {
     }
 
     public static void updateUser(String name, String password, String phone) {
+        int count = 0;
         for (User i: users) {
             if(i.getUsername().equals(name)) {
                 i.setUsername(name);
@@ -71,6 +72,11 @@ public class Admin {
                 i.setPhoneNumber(phone);
                 break;
             }
+            count++;
         }
+        if(count == users.size()) {
+            System.out.println("User cannot be found");
+        }
+        FileIO.updateFile(users, usersText);
     }
 }
