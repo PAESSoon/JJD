@@ -9,6 +9,8 @@
         ;
         go
 
+/***** Table No. 2 - activity ****/
+-- Primary Key: id
         create table activity
         (
             id int identity(1,1) not null, 
@@ -17,6 +19,8 @@
         )
         ;
         go
+
+/***** Table No. 3 - user_activity ****/
 
         create table user_activity
         (
@@ -41,6 +45,8 @@
 	        add constraint fk_activity_user_activity foreign key (activity_id)
 		        references activity (id)
 		;
+
+
 
 
 
