@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
 
         ServletContext context = getServletContext();
         usersText = context.getResource("/WEB-INF/" + "usersList.txt").toString();
-        out.println(usersText);
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");

@@ -58,7 +58,6 @@ public class FileIO {
                 inputFromBuffer.add(strInput.split(" "));
 
             }
-//            System.out.println("in try FileIO");
 
 //          create a user object from each line in the usersList file
             for(String[] item: inputFromBuffer) {
