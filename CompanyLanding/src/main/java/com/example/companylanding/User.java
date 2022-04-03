@@ -3,10 +3,12 @@ package com.example.companylanding;
 public class User {
     private String username;
     private String password;
+    private String phoneNumber;
 
-    public User(String username, String password) {
+    public User(String username, String password, String phoneNumber) {
         this.username = username;
         this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getUsername() {
@@ -24,4 +26,12 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
+

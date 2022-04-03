@@ -1,9 +1,9 @@
 # JJD
 
-Assignment 1  - Java, scanner
-The program is run through the main method in Admin.java
+Assignment 1  - Java, scanner, IntelliJ Idea
+The program is run through the main method in Admin.java in com.example.companylanding package
 When the programs runs, 
-1 - it will populate an arrayList with any data found on the UsersList text file.
+1 - it will populate an arrayList with any data found on the external UsersList text file.
 2 - ask admin(user) to choose the operation they want to perform - They can add a user, update user's info
 or cancel to terminate the session.
 3 - If admin chooses "Add", they will be able to enter the Username, Password and Phone number. 
@@ -18,6 +18,7 @@ Assignment 2  - web App using Tomcat 9.0.56, Apache, Maven, Servlet, JSP, HTML, 
 The front-end has been built using JSP. 
 When user inputs her username and password, the servlet will check if there is a match in the same UsersList text file (used in assignment 1). If a match is found, the user will be logged in and greeted. If no match is found, an error message will popup on the same page. User can input his information again.
 If user refreshes the page, the popup and input are removed.
+
 Program is run in Apache Tomcat and configured to open browser at URL: http://localhost:8080/CompanyLanding/index.jsp
 
 

@@ -347,10 +347,15 @@
         <aside>
             <p class="aside-title">LOGIN</p>
 
-            <div id="error"><%if(request.getAttribute("errMsg") != null)
+            <div id="error"><%String errorMsg = "";
+
+            if(request.getAttribute("errMsg") != null)
             {
-                out.println(request.getAttribute("errMsg"));
-            }%></div>
+                errorMsg = request.getAttribute("errMsg").toString();
+            }%>
+                <p><%=errorMsg%></p>
+
+            </div>
 
             <form action="login" method="POST">
                 <label for="username">Username: </label>
@@ -366,7 +371,7 @@
 
     <div id="contact">
         <h3>Contact Form</h3>
-        <form action="mailto:atheanae@gmail.com.com" method="post" enctype="text/plain">
+        <form action="mailto:test@fakes.com" method="post" enctype="text/plain">
             <label for="fname">First Name</label>
             <input type="text" id="fname" name="firstname">
 
@@ -415,7 +420,7 @@
 
 <script>
     function submitContactForm() {
-        alert("Contact form has been submitted.");
+        alert("The email has been generated.");
     }
 
     // clear all input fields on refresh page

@@ -1,4 +1,4 @@
-package com.example.admin;
+package com.example.companylanding;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,16 +6,19 @@ import java.util.Scanner;
 public class Admin {
     final static String usersText = "/Users/BumBum/Repositories/KLF_JJD/usersList.txt";
     private static ArrayList<User> users = new ArrayList<>();
+    private static boolean isEmpty;
 
     public static void main(String[] args) {
-//        populate users arrayList with existing data
-        try{
+//        fill users arrayList with existing data
+        try {
             users = FileIO.readFile(usersText);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
 
         Scanner input = new Scanner(System.in);
+
+        System.out.println("************************** Welcome to Users Management System **************************");
 
         boolean isActive = true;
         while (isActive) {
@@ -50,32 +53,40 @@ public class Admin {
     }
 
     public static void addUser(String name, String password, String phone) {
-        for (User i: users) {
-            if(i.getUsername().equals(name)) {
+        for (User i : users) {
+            if (i.getUsername().equals(name)) {
                 System.out.println("Username already taken!");
                 return;
             }
         }
         User person = new User(name, password, phone);
-        FileIO.writeUser(person, usersText);
+
+        if (users.size() > 0) {
+            isEmpty = false;
+        } else {
+            isEmpty = true;
+        }
+        FileIO.writeUser(person, usersText, isEmpty);
         users.add(person);
         System.out.println("A new user has been created");
     }
 
     public static void updateUser(String name, String password, String phone) {
         int count = 0;
-        for (User i: users) {
-            if(i.getUsername().equals(name)) {
+        for (User i : users) {
+            if (i.getUsername().equals(name)) {
                 i.setUsername(name);
                 i.setPassword(password);
                 i.setPhoneNumber(phone);
                 FileIO.updateFile(users, usersText);
+                System.out.println("User " + i.getUsername() + " has been updated");
                 break;
             }
             count++;
         }
-        if(count == users.size()) {
+        if (count == users.size()) {
             System.out.println("User cannot be found");
         }
     }
 }
+

@@ -22,13 +22,14 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        out.println(username);
-        out.println(password);
-
         request.setAttribute("errMsg", null);
 
-//        populate arraylist from users file
-        existingUsers = FileIO.readFile(usersText);
+//        fill existingUsers arrayList with existing data
+        try{
+            existingUsers = FileIO.readFile(usersText);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
 
         int count = 0;
 //        if user input exists on record, they can login
