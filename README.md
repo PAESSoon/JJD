@@ -1,4 +1,7 @@
 # JJD
+Setup instructions:
+- In IntelliJ Idea download and install Apache Tomcat from https://tomcat.apache.org/
+- The landing page in JSP is configured to open browser at URL: http://localhost:8080/CompanyLanding/index.jsp
 
 Assignment 1  - Java, scanner, IntelliJ Idea
 The program is run through the main method in Admin.java in com.example.companylanding package
@@ -19,10 +22,8 @@ The front-end has been built using JSP.
 When user inputs her username and password, the servlet will check if there is a match in the same UsersList text file (used in assignment 1). If a match is found, the user will be logged in and greeted. If no match is found, an error message will popup on the same page. User can input his information again.
 If user refreshes the page, the popup and input are removed.
 
-The Landing Page Program is run in Apache Tomcat and configured to open browser at URL: http://localhost:8080/CompanyLanding/index.jsp
 
-
-Assignment 3 - Microsoft SQL server
+Assignment 3 - Microsoft SQL server / SQL Server Management Studio
 1 - Creation of database
 2 - Creation of schema
 3 - Insert the 3 tables
