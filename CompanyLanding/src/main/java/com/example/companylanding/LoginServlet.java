@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static java.lang.System.out;
+
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    ArrayList<User> userArrayList = new ArrayList<>();
     ArrayList<User> existingUsers = new ArrayList<>();
     final static String usersText = "/Users/BumBum/Repositories/KLF_JJD/usersList.txt";
 
@@ -21,23 +22,36 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        out.println(username);
+        out.println(password);
+
+        request.setAttribute("errMsg", null);
+
+//        populate arraylist from users file
         existingUsers = FileIO.readFile(usersText);
-        System.out.println("size: " + existingUsers.size());
+
         int count = 0;
+//        if user input exists on record, they can login
         for(User person: existingUsers) {
-            System.out.println(person.getUsername());
-            System.out.println(person.getUsername().length());
             if(person.getUsername().equals(username.trim()) && person.getPassword().equals(password)) {
-                response.getWriter().println("<h1>Hello " + username + "!</h1>");
+                response.getWriter().println("<div style='font-size:18px;'>Hello " + username + "!</div>");
                 break;
             }
             count++;
         }
+//        if user input cannot be found in the stored users file, refresh the html page
         if(count == existingUsers.size()) {
-            System.out.println("In If" + count);
-            request.setAttribute("errMsg", "Invalid username or password");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("LandingPage.html");
+            if(username.length() > 0 || password.length() > 0) {
+                request.setAttribute("errMsg", "Invalid username or password");
+            } else {
+                request.setAttribute("errMsg", null);
+            }
+
+            out.println("Sorry UserName or Password Error!");
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("LandingPage.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             try {
+//                out.println(response);
                 dispatcher.forward( request, response);
             } catch (ServletException e) {
                 e.printStackTrace();

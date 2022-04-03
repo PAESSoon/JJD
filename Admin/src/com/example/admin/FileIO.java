@@ -15,7 +15,7 @@ public class FileIO {
             bw.close();
 
         } catch (IOException e) {
-            System.err.format("IOException: %s%n", e);
+            System.out.println("IOException");
         }
     }
 
@@ -30,7 +30,7 @@ public class FileIO {
             bw.close();
 
         } catch (IOException e) {
-            System.err.format("IOException: %s%n", e);
+            System.out.println("IOException");
         }
     }
 
@@ -54,6 +54,7 @@ public class FileIO {
 
             }
 
+//          create a user object from each line in the usersList file
             for(String[] item: inputFromBuffer) {
                 User single = new User(item[0], item[1], item[2]);
                 initialArr.add(single);

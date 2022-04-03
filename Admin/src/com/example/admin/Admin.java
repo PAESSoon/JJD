@@ -8,8 +8,12 @@ public class Admin {
     private static ArrayList<User> users = new ArrayList<>();
 
     public static void main(String[] args) {
-
-        users = FileIO.readFile(usersText);
+//        populate users arrayList with existing data
+        try{
+            users = FileIO.readFile(usersText);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
 
         Scanner input = new Scanner(System.in);
 
@@ -30,17 +34,10 @@ public class Admin {
 
                 if (operation.equals("add")) {
                     Admin.addUser(name, pwd, phone);
-                    for (User i: users) {
-                        System.out.println(i.getUsername() + i.getPassword() + i.getPhoneNumber());
-                    }
                 } else {
                     Admin.updateUser(name, pwd, phone);
-                    for (User i: users) {
-                        System.out.println(i.getUsername() + i.getPassword() + i.getPhoneNumber());
-                    }
                 }
             } else if (operation.equals("cancel")) {
-
                 isActive = false;
                 System.out.println("Thank you and Goodbye!");
             } else {
@@ -72,6 +69,7 @@ public class Admin {
                 i.setUsername(name);
                 i.setPassword(password);
                 i.setPhoneNumber(phone);
+                FileIO.updateFile(users, usersText);
                 break;
             }
             count++;
@@ -79,6 +77,5 @@ public class Admin {
         if(count == users.size()) {
             System.out.println("User cannot be found");
         }
-        FileIO.updateFile(users, usersText);
     }
 }
