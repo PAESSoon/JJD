@@ -19,7 +19,7 @@ The front-end has been built using JSP.
 When user inputs her username and password, the servlet will check if there is a match in the same UsersList text file (used in assignment 1). If a match is found, the user will be logged in and greeted. If no match is found, an error message will popup on the same page. User can input his information again.
 If user refreshes the page, the popup and input are removed.
 
-Program is run in Apache Tomcat and configured to open browser at URL: http://localhost:8080/CompanyLanding/index.jsp
+The Landing Page Program is run in Apache Tomcat and configured to open browser at URL: http://localhost:8080/CompanyLanding/index.jsp
 
 
 Assignment 3 - Microsoft SQL server

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Admin {
-    final static String usersText = "/Users/BumBum/Repositories/KLF_JJD/usersList.txt";
+    final static String usersText = "../CompanyLanding/target/CompanyLanding-1.0-SNAPSHOT/WEB-INF/usersList.txt"; // not the ideal location to store the text file, it does work but will find a better place that works for both the servlet and this file.
     private static ArrayList<User> users = new ArrayList<>();
     private static boolean isEmpty;
 

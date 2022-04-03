@@ -12,7 +12,6 @@ public class FileIO {
             } else {
                 writer = new FileWriter(file, true);
             }
-//            FileWriter writer = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(writer);
 
             bw.write(user.getUsername() + " ");

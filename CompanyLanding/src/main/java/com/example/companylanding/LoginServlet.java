@@ -1,6 +1,7 @@
 package com.example.companylanding;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +16,16 @@ import static java.lang.System.out;
 public class LoginServlet extends HttpServlet {
 
     ArrayList<User> existingUsers = new ArrayList<>();
-    final static String usersText = "/Users/BumBum/Repositories/KLF_JJD/usersList.txt";
+    private String usersText = "";
+
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        ServletContext context = getServletContext();
+        usersText = context.getResource("/WEB-INF/" + "usersList.txt").toString();
+        out.println(usersText);
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -26,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 
 //        fill existingUsers arrayList with existing data
         try{
-            existingUsers = FileIO.readFile(usersText);
+            existingUsers = FileIO.readFile(usersText.substring(5));
         } catch(Exception e) {
             System.out.println(e);
         }
@@ -52,7 +59,6 @@ public class LoginServlet extends HttpServlet {
 //            RequestDispatcher dispatcher = request.getRequestDispatcher("LandingPage.html");
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             try {
-//                out.println(response);
                 dispatcher.forward( request, response);
             } catch (ServletException e) {
                 e.printStackTrace();
